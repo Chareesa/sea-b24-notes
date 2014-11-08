@@ -13,7 +13,7 @@ mongoose.connect(url);
 
 require('./routes/notes_routes')(app);
 
-app.get('/', function (res, req) {
+app.get('/', function (req, res) {
   res.json('{"msg": "well hello there!"}')
 })
 
