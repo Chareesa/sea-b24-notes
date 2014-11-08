@@ -9,6 +9,10 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/', function (req, res) {
+  res.json({"msg": "well hello there!"});
+  });
+
   app.get('/api/notes/:id', function(req, res) {
     Note.findOne({'_id': req.params.id}, function(err, data) {
       if (err) return res.status(500).send('there was an error');
