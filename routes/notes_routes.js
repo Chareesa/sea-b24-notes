@@ -26,9 +26,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/api/notes/first/:firstLetterFirstName', function(req, res) {
-    var firstLetterFirstNameRegex = new RegExp('^' + req.params.firstLetterFirstName + '$', 'i');
-    Note.find({'firstName': { $regex: firstLetterFirstNameRegex }}, function(err, data) {
+  app.get('/api/notes/firstName/:firstName', function(req, res) {
+    var firstNameRegex = new RegExp('^' + req.params.firstName + '$', 'i');
+    Note.find({'firstName': { $regex: firstNameRegex }}, function(err, data) {
       if (err) return res.status(500).send('there was an error');
       res.json(data);
     });
