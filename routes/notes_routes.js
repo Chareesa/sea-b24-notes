@@ -2,10 +2,9 @@
 
 var Note = require('../models/note');
 
-// Note.schema.path('noteBody').require(true, 'You need a string');
-
 Note.schema.path('noteBody').required(true, 'need a string!');
-Note.schema.path('firstName').required(true, 'need a string!');
+// ANOTHER OPTION
+// Note.schema.path('firstName').required(true, 'need a string!');
 
 module.exports = function(app) {
   app.get('/api/notes', function(req ,res) {
@@ -26,13 +25,14 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/api/notes/firstName/:firstName', function(req, res) {
-    var firstNameRegex = new RegExp('^' + req.params.firstName + '$', 'i');
-    Note.find({'firstName': { $regex: firstNameRegex }}, function(err, data) {
-      if (err) return res.status(500).send('there was an error');
-      res.json(data);
-    });
-  });
+  // ANOTHER OPTION TO ADD
+  // app.get('/api/notes/firstName/:firstName', function(req, res) {
+  //   var firstNameRegex = new RegExp('^' + req.params.firstName + '$', 'i');
+  //   Note.find({'firstName': { $regex: firstNameRegex }}, function(err, data) {
+  //     if (err) return res.status(500).send('there was an error');
+  //     res.json(data);
+  //   });
+  // });
 
   app.post('/api/notes', function(req, res) {
     var note = new Note(req.body);

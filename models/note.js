@@ -3,15 +3,16 @@
 var mongoose = require('mongoose');
 
 var noteSchema = mongoose.Schema({
-  noteBody: {type: String, validate: [validEntry, 'need a noteBody']},
-  firstName: {type: String, validate: [validEntry, 'need a firstName']},
-  lastName: {type: String},
-  age: {type: Number}
+  noteBody: {type: String, validate: [validEntry, 'need a note']},
+  // OTHER OPTIONS
+  // firstName: {type: String, validate: [validEntry, 'need a firstName']},
+  // lastName: {type: String},
+  // age: {type: Number}
 });
 
-function validEntry(v) {
-  if (v) {
-    return v.length > 0;
+function validEntry(value) {
+  if (value) {
+    return value.length > 0;
   }
   return false;
 }
