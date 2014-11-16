@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-simple-mocha');
@@ -20,4 +18,3 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['jshint', 'simplemocha']);
   grunt.registerTask('default', ['test']);
 };
-//
