@@ -1,0 +1,17 @@
+<div data-ng-controller="notesCtrl" data-ng-init="index()">
+  <new-note-direc save="saveNewNote(resource)" fieldname="'noteBody'"></new-note-direc>
+
+  <div data-ng-repeat="note in notes">
+    <div data-ng-hide="note.editing">
+      <p>{{note.noteBody}}</p>
+      <button data-ng-click="note.editing = true">Edit</button>
+      <button data-ng-click="deleteNote(note)">Delete</button>
+    </div>
+    <div data-ng-show="note.editing">
+      <input type="text" data-ng-model="note.noteBody">
+      <button data-ng-click="saveNote(note)">Save</button>
+      <button data-ng-click="note.editing = false">Cancel</button>
+    </div>
+  </div>
+</div>
+

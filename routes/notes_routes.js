@@ -25,15 +25,6 @@ module.exports = function(app) {
     });
   });
 
-  /* ANOTHER OPTION TO ADD
-     app.get('/api/notes/firstName/:firstName', function(req, res) {
-       var firstNameRegex = new RegExp('^' + req.params.firstName + '$', 'i');
-       Note.find({'firstName': { $regex: firstNameRegex }}, function(err, data) {
-         if (err) return res.status(500).send('there was an error');
-         res.json(data);
-       });
-     }); */
-
   app.post('/api/notes', function(req, res) {
     var note = new Note(req.body);
     note.save(function(err, data) {

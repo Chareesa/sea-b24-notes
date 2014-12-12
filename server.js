@@ -8,6 +8,7 @@ var app = express();
 var url = process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/notes-development';
 
 app.use(bodyparser.json());
+app.use(express.static(__dirname + '/build'));
 
 mongoose.connect(url);
 
