@@ -32,7 +32,7 @@ describe('NotesController', function() {
     });
 
     it('make an call to index', function() {
-      $httpBackend.expectGET('/api/notes').respond(200, [{'noteBody': 'test note', '_id': '1'}]);
+      $httpBackend.expectGET('/api/notes').respond(200, [{noteBody: 'test note', _id: '1'}]);
 
       $scope.index();
   debugger;
@@ -43,11 +43,11 @@ describe('NotesController', function() {
       expect(typeof $scope.notes[0]).toBe('object');
       expect($scope.notes[0].noteBody).toBe('test note');
     });
-    
+
     it('should save a new note', function() {
-      $httpBackend.expectPOST('/api/notes').respond(200, {'noteBody': 'test note', '_id': 1});
-      $scope.notes = []; 
-      $scope.newNote = {'noteBody': 'test note'};
+      $httpBackend.expectPOST('/api/notes').respond(200, {noteBody: 'test note', _id: 1});
+      $scope.notes = [];
+      $scope.newNote = {noteBody: 'test note'};
       $scope.saveNewNote();
 
       $httpBackend.flush();
@@ -59,7 +59,7 @@ describe('NotesController', function() {
 
     it('it should delete a note', function() {
       $httpBackend.expectDELETE('/api/notes/1').respond(200);
-      var note = {'noteBody':'test note', '_id': 1};
+      var note = {noteBody:'test note', _id: 1};
       $scope.notes = [note];
 
       $scope.deleteNote(note);
@@ -72,7 +72,7 @@ describe('NotesController', function() {
     it('it should edit a note', function() {
       $httpBackend.expectPUT('/api/notes/1').respond(200);
 
-      var note = {'noteBody': 'test note', '_id': 1};
+      var note = {noteBody: 'test note', _id: 1};
       $scope.notes = [note];
       note.noteBody = 'changed test';
 

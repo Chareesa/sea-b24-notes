@@ -20,7 +20,7 @@ module.exports = function(app) {
           return $http({
             method: 'POST',
             url: '/api/' + resourceName,
-            data: resource 
+            data: resource
           })
           .error(handleErrors);
         },
@@ -38,7 +38,7 @@ module.exports = function(app) {
           return $http({
             method: 'DELETE',
             url: '/api/' + resourceName + '/' + resource._id
-          }) 
+          })
           .error(handleErrors);
         }
       };
