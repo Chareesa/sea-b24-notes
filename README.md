@@ -1,4 +1,5 @@
 Notes App
+[![Build Status](https://travis-ci.org/Chareesa/sea-b24-notes.svg?branch=base64_encoding)](https://travis-ci.org/Chareesa/sea-b24-notes)
 ==============================
 The notes demo app.
 
