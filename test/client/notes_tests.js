@@ -7,6 +7,7 @@ describe('NotesController', function() {
   var $controllerConstructor;
   var $httpBackend;
   var $scope;
+  var $cookies = {jwt: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1NDgyODg2OTA5ODdlOGQ5N2RkYmE2MmIifQ.0sVSeEGon3aNcyURfz2dDiGoiFrgvvePIlnKQvAWPRg'};
 
   beforeEach(angular.mock.module('notesApp'));
 
@@ -23,7 +24,7 @@ describe('NotesController', function() {
   describe('rest request', function() {
     beforeEach(angular.mock.inject(function(_$httpBackend_) {
       $httpBackend = _$httpBackend_;
-      $controllerConstructor('notesCtrl', {$scope: $scope});
+      $controllerConstructor('notesCtrl', {$scope: $scope, $cookies: $cookies});
     }));
 
     afterEach(function() {
@@ -31,7 +32,7 @@ describe('NotesController', function() {
       $httpBackend.verifyNoOutstandingRequest();
     });
 
-    it('make an call to index', function() {
+    it('make a call to index', function() {
       $httpBackend.expectGET('/api/notes').respond(200, [{noteBody: 'test note', _id: '1'}]);
 
       $scope.index();

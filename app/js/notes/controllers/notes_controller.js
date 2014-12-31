@@ -1,8 +1,14 @@
 'use strict';
 
+/*jshint sub:true*/
+
 module.exports = function(app) {
-  app.controller('notesCtrl', ['$scope', '$http', 'ResourceBackend', function($scope, $http, ResourceBackend) {
+  app.controller('notesCtrl', ['$scope', '$http', 'ResourceBackend', '$cookies', '$location', function($scope, $http, ResourceBackend, $cookies, $location) {
     var notesBackend = new ResourceBackend('notes');
+
+    if (!$cookies.jwt || !$cookies.jwt.length) return $location.path('/users');
+
+    $http.defaults.headers.common['jwt'] = $cookies.jwt;
 
     $scope.index = function() {
       notesBackend.index()
@@ -22,7 +28,7 @@ module.exports = function(app) {
     $scope.saveNote = function(note) {
       notesBackend.save(note)
       .success(function() {
-        note.editing = false; 
+        note.editing = false;
       });
     };
 
