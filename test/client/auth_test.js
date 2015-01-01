@@ -1,6 +1,6 @@
 'use strict';
 
-require('../../app/js/client');
+require('../../app/js/client.js');
 require('angular-mocks');
 
 describe('NotesController', function() {

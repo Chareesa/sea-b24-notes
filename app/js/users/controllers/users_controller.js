@@ -31,7 +31,7 @@ module.exports = function(app) {
       if ($scope.errors.length) return;
       $scope.newUser.email = $base64.encode($scope.newUser.email);
       $scope.newUser.password = $base64.encode($scope.newUser.password);
-      $scope.newUser.passwordConfirmation = $base64.encode($scope.newuser.passwordConfirmation);
+      $scope.newUser.passwordConfirmation = $base64.encode($scope.newUser.passwordConfirmation);
       $http({
         method: 'POST',
         url: '/api/users',
